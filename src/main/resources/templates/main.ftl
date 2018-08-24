@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<#import "parts/common.ftl" as c>
+<#import "parts/login.ftl" as l>
+
+<@c.page>
 <div>
-    <form action="logout" method="post">
-        <input type="hidden" name="_csrf" value="${_csrf.token}">
-        <input type="submit" value="Sign Out"/>
-    </form>
+    <@l.logout/>
 </div>
 <div>
     <form method="post">
@@ -19,24 +13,22 @@
         <button type="submit">Add</button>
     </form>
 </div>
-<hr>
 <div>
-    <form method="post" action="filter">
-        <input type="text" name="filter" placeholder="Enter a tag to search for messages...">
-        <input type="hidden" name="_csrf" value="${_csrf.token}">
+    <form method="get" action="main">
+        <input type="text" name="filter" value="${filter!}"
+               placeholder="Enter a tag to search for messages...">
         <button type="submit">Find</button>
     </form>
 </div>
-<hr>
 <div>List messages</div>
-<hr>
-<#list messages as message>
-<div>
-    <b>${message.id}</b>
-    <span>${message.text}</span>
-    <i>${message.tag}</i>
-    <strong>${message.authorName}</strong>
-</div>
-</#list>
-</body>
-</html>
+    <#list messages as message>
+    <div>
+        <b>${message.id}</b>
+        <span>${message.text}</span>
+        <i>${message.tag}</i>
+        <strong>${message.authorName}</strong>
+    </div>
+    <#else >
+    No messages
+    </#list>
+</@c.page>
