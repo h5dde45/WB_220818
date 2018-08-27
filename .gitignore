@@ -17,6 +17,7 @@
 .mvn
 mvnw.cmd
 mvnw
+application-mail.properties
 *.ipr
 
 ### NetBeans ###
