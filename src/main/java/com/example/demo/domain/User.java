@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "usr")
-public class User implements UserDetails{
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -22,23 +22,19 @@ public class User implements UserDetails{
     @NotBlank(message = "Password cannot be empty")
     private String password;
 
-    @Transient
-    @NotBlank(message = "Password confirmation cannot be empty")
-    private String password2;
-
-    private boolean  active;
+    private boolean active;
 
     @Email(message = "Email is not correct")
     @NotBlank(message = "Username cannot be empty")
     private String email;
     private String activationCode;
 
-    @ElementCollection(targetClass = Role.class,fetch = FetchType.EAGER)
-    @CollectionTable(name = "user_role",joinColumns = @JoinColumn(name = "user_id"))
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
-    public boolean isAdmin(){
+    public boolean isAdmin() {
         return roles.contains(Role.ADMIN);
     }
 
@@ -123,11 +119,4 @@ public class User implements UserDetails{
         this.activationCode = activationCode;
     }
 
-    public String getPassword2() {
-        return password2;
-    }
-
-    public void setPassword2(String password2) {
-        this.password2 = password2;
-    }
 }
