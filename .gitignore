@@ -1,5 +1,5 @@
-#/target/
-!.mvn/wrapper/maven-wrapper.jar
+/target/
+#!.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
 .apt_generated
@@ -27,3 +27,5 @@ application-mail.properties
 /dist/
 /nbdist/
 /.nb-gradle/
+#src/test/
+#target/
