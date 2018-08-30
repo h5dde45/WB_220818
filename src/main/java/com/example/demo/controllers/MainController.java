@@ -31,7 +31,7 @@ public class MainController {
     @Value("${upload.path}")
     private String uploadPath;
 
-    @GetMapping(value = "")
+    @GetMapping(value = "/")
     public String greetingString() {
         return "greeting";
     }
