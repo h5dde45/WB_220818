@@ -1,6 +1,6 @@
 
-*.jar
-target
+#*.jar
+#target
 .idea
 uploads
 src/test/
